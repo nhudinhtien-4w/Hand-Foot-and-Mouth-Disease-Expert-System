@@ -1,130 +1,232 @@
-# CS217 Knowledge Base - DMN Decision System
+# CS217 Knowledge Base - Hệ Chuyên Gia Chẩn Đoán Bệnh Tay Chân Miệng
 
-Hệ thống quyết định phân độ bệnh TCM (Tay-Chân-Miệng) dựa trên DMN (Decision Model and Notation) với Hit Policy: Priority.
+Hệ thống chuyên gia chẩn đoán bệnh **Tay-Chân-Miệng (HFMD)** cho trẻ em, phân độ bệnh từ 1 đến 4 theo tài liệu y khoa.
 
-## Cách sử dụng
+---
 
-### 1. Chạy ứng dụng
+## 📋 Tổng quan
 
-Mở file `frontend/index.html` trực tiếp trong trình duyệt. Không cần web server vì đây là ứng dụng thuần HTML/CSS/JS.
+### Chức năng chính
+- ✅ Nhập triệu chứng và chỉ số sinh tồn bệnh nhân
+- ✅ Tự động phân độ bệnh: **Độ 1, 2a, 2b1, 2b2, 3, 4**
+- ✅ Giải thích quyết định dựa trên luật y khoa
+- ✅ Hỗ trợ cả web interface và API
+
+### Công nghệ sử dụng
+
+**Frontend:**
+- HTML5, CSS3, Vanilla JavaScript
+- Không cần framework - chạy trực tiếp trên trình duyệt
+
+**Backend:**
+- Python 3.11+
+- Flask (Web Framework)
+- Forward Chaining Inference Engine
+- Production Rules từ `data/rules.json`
+
+**Knowledge Base:**
+- 36 production rules chuẩn y khoa
+- Format JSON, dễ bảo trì và mở rộng
+- Priority-based conflict resolution
+
+---
+
+## 🚀 Cài đặt
+
+### 1. Clone Repository
 
 ```bash
-# Mở bằng trình duyệt mặc định (Windows)
-start frontend/index.html
-
-# Hoặc dùng VS Code Live Server
-# Right-click vào index.html → Open with Live Server
+git clone https://github.com/your-username/CS217-Knowledge-Base.git
+cd CS217-Knowledge-Base
 ```
 
-### 2. Nhập dữ liệu bệnh nhân
+### 2. Tạo Virtual Environment
 
-- Tick các checkbox cho các triệu chứng có/không
-- Nhập số liệu cho các trường số (nhiệt độ, mạch, SpO₂, v.v.)
-- Hệ thống tự động tính toán và hiển thị kết quả phân độ
+```bash
+# Tạo virtual environment
+python -m venv cs217_venv
 
-### 3. Tính toán HR (không sốt)
+# Kích hoạt (Windows)
+cs217_venv\Scripts\activate
 
-1. Nhập "Mạch đo được" (bpm)
-2. Nhập "Nhiệt độ tối đa" (°C)
-3. Click nút "Tính HR (không sốt)"
-4. Giá trị HR điều chỉnh sẽ tự động được tính: `HR_no_fever = HR_measured - max(0, (TempC - 38) * 10)`
+# Kích hoạt (Linux/Mac)
+source cs217_venv/bin/activate
+```
 
-### 4. Cập nhật Rules
+### 3. Cài đặt Dependencies
 
-Trong khung "Rules JSON", bạn có thể:
-- Chỉnh sửa rules hiện tại
-- Dán toàn bộ JSON rules đầy đủ từ file `data/rules.json`
-- Rules sẽ được validate và áp dụng ngay khi bạn chỉnh sửa
+```bash
+pip install -r requirements.txt
+```
 
-### 5. Xuất dữ liệu
+**Dependencies chính:**
+- Flask==3.0.0
+- Flask-CORS==4.0.0
+- python-dotenv==1.0.0
 
-Click nút "Tải CSV hàng ca bệnh" để xuất dữ liệu bệnh nhân ra file CSV theo format 40 cột chuẩn.
+---
 
-## Logic Engine
+## 💻 Chạy ứng dụng
 
-### Cấu trúc Rule
+### Option 1: Chỉ Frontend (Standalone)
 
-Mỗi rule có format:
+```bash
+# Mở file trong trình duyệt
+start frontend/index.html
 
+# Hoặc dùng Live Server trong VS Code
+# Right-click index.html → Open with Live Server
+```
+
+### Option 2: Full Stack (Frontend + Backend)
+
+```bash
+# Chạy Flask server
+python app.py
+
+# Server sẽ chạy tại: http://localhost:5000
+# Mở trình duyệt và truy cập http://localhost:5000
+```
+
+---
+
+## 🌐 Deploy
+
+### Deploy Frontend (Static hosting)
+
+**GitHub Pages:**
+```bash
+# Đẩy code lên GitHub
+git push origin main
+
+# Enable GitHub Pages trong Settings → Pages
+# Chọn branch: main, folder: / (root)
+```
+
+**Netlify/Vercel:**
+- Kéo thả thư mục `frontend/` vào Netlify/Vercel
+- Tự động deploy
+
+### Deploy Backend (Python Flask)
+
+**1. Render.com (Miễn phí)**
+
+```bash
+# Tạo file Procfile (đã có sẵn)
+web: gunicorn app:app
+
+# Push lên GitHub và connect với Render
+```
+
+**2. PythonAnywhere**
+
+```bash
+# Upload files lên PythonAnywhere
+# Cấu hình WSGI file trỏ đến app.py
+```
+
+**3. Heroku**
+
+```bash
+# Cài Heroku CLI
+heroku login
+heroku create cs217-hfmd-diagnosis
+
+# Deploy
+git push heroku main
+
+# Mở app
+heroku open
+```
+
+**4. VPS (Ubuntu)**
+
+```bash
+# Cài đặt
+sudo apt update
+sudo apt install python3-pip nginx
+
+# Clone repo
+git clone https://github.com/your-username/CS217-Knowledge-Base.git
+cd CS217-Knowledge-Base
+
+# Install dependencies
+pip3 install -r requirements.txt
+
+# Chạy với Gunicorn
+gunicorn --bind 0.0.0.0:5000 app:app
+
+# Cấu hình Nginx reverse proxy
+sudo nano /etc/nginx/sites-available/cs217
+# ... cấu hình proxy_pass đến localhost:5000
+```
+
+---
+
+### Web Interface
+
+1. Mở `http://localhost:5000` (hoặc deployed URL)
+2. Nhập thông tin bệnh nhân:
+   - **Độ 1**: Phát ban, loét miệng
+   - **Độ 2a**: Sốt cao, giật mình, triệu chứng kèm theo
+   - **Độ 2b**: Biến chứng thần kinh
+   - **Độ 3**: Rối loạn tuần hoàn
+   - **Độ 4**: Suy hô hấp, sốc
+3. Hệ thống tự động phân tích và đưa ra kết quả
+
+### API Endpoint
+
+**POST /api/diagnose**
+
+```bash
+curl -X POST http://localhost:5000/api/diagnose \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fever_temp_c": 39.5,
+    "spo2": 88,
+    "rash_hand_foot_mouth": true,
+    "age_months": 36
+  }'
+```
+
+**Response:**
 ```json
 {
-  "id": "4-01",
-  "result": "4",
-  "priority": 400,
-  "when": {
-    "SpO₂": "<92"
-  },
-  "notes": "SpO₂ <92% ⇒ Độ 4",
-  "source": "QĐ 292 – II.6 (Độ 4)"
+  "disease_level": "4",
+  "priority": 5,
+  "matched_rules": ["grade_4_spo2"],
+  "explanation": "SpO2 < 92% - Độ 4"
 }
 ```
 
-### Priority Map
+---
 
-- Độ 4: 400 điểm (cao nhất)
-- Độ 3: 300 điểm
-- Độ 2b: 250 điểm
-- Độ 2a: 200 điểm
-- Độ 1: 100 điểm
+## 📚 Tài liệu tham khảo
 
-### Cú pháp điều kiện
+- [Hướng dẫn chẩn đoán bệnh TCM - Bộ Y Tế](...)
+- [Forward Chaining Algorithm](https://en.wikipedia.org/wiki/Forward_chaining)
+- [Flask Documentation](https://flask.palletsprojects.com/)
 
-Engine hỗ trợ nhiều loại điều kiện:
+---
 
-1. **Số so sánh**: `<92`, `>=39`, `<=130`
-2. **Boolean**: `true`, `false`, `không`
-3. **Tập hợp**: `{A,V,P}` (chứa một trong các giá trị)
-4. **Tốc độ**: `>2/h` (số lần/giờ)
-5. **Tuổi**: `<12m`, `≥12m`
-6. **String exact**: so sánh chính xác
+## 👥 Đóng góp
 
-## Mở rộng cho Backend
+Mọi đóng góp đều được hoan nghênh! Vui lòng:
+1. Fork repo
+2. Tạo branch mới (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Mở Pull Request
 
-Cấu trúc hiện tại đã được tổ chức sẵn cho việc tích hợp backend:
+---
 
-### Đề xuất kiến trúc:
+## 📄 License
 
-```
-CS217-Knowledge-Base/
-├── frontend/           # (đã có)
-├── assets/            # (đã có)
-├── data/              # (đã có)
-├── backend/           # (sẽ thêm)
-│   ├── api/
-│   │   ├── routes/
-│   │   ├── controllers/
-│   │   └── middleware/
-│   ├── services/
-│   │   ├── decision-engine.js
-│   │   └── rules-manager.js
-│   ├── models/
-│   │   ├── Patient.js
-│   │   └── Rule.js
-│   ├── config/
-│   │   └── database.js
-│   └── server.js
-├── tests/             # Unit tests
-└── docs/              # Documentation
-```
+MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết.
 
-### API Endpoints đề xuất:
+---
 
-```
-POST   /api/evaluate          # Đánh giá bệnh nhân
-GET    /api/rules             # Lấy danh sách rules
-POST   /api/rules             # Thêm rule mới
-PUT    /api/rules/:id         # Cập nhật rule
-DELETE /api/rules/:id         # Xóa rule
-GET    /api/patients          # Lấy danh sách bệnh nhân
-POST   /api/patients          # Lưu ca bệnh mới
-```
+## 📞 Liên hệ
 
-## Tương lai
-
-- [ ] Tích hợp backend (Node.js/Express)
-- [ ] Database (MongoDB/PostgreSQL)
-- [ ] Authentication & Authorization
-- [ ] Lưu trữ lịch sử ca bệnh
-- [ ] Export PDF report
-- [ ] Dashboard phân tích thống kê
-- [ ] Multi-language support
+- **GitHub**: [@your-username](https://github.com/your-username)
+- **Email**: your.email@example.com

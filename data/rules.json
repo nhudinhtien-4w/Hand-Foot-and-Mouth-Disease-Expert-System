@@ -1,490 +1,575 @@
-[
-  {
-    "id": "04-01",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "SpO₂": "<92"
+{
+  "conclusion_rules": [
+    {
+      "id": "grade_1_rash",
+      "name": "Độ 1 - Chỉ có phát ban tay chân miệng",
+      "priority": 0,
+      "conditions": [
+        {
+          "field": "rash_hand_foot_mouth",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "1"
+      }
     },
-    "notes": "SpO₂ <92% ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-02",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "Apnea": "true"
+    {
+      "id": "grade_1_ulcer",
+      "name": "Độ 1 - Chỉ có loét miệng",
+      "priority": 0,
+      "conditions": [
+        {
+          "field": "mouth_ulcer",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "1"
+      }
     },
-    "notes": "Ngưng thở ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-03",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "RespIrregularSevere": "true"
+    {
+      "id": "grade_2a_1",
+      "name": "Độ 2a - Giật mình < 2 lần/30 phút (không ghi nhận lúc khám)",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "startle_observed",
+          "operator": "==",
+          "value": false
+        },
+        {
+          "field": "startle_per_30min",
+          "operator": "<",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a"
+      }
     },
-    "notes": "Rối loạn nhịp thở nặng ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-04",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "PulmEdemaPinkFroth": "true"
+    {
+      "id": "grade_2a_2",
+      "name": "Độ 2a - Sốt cao ≥ 39°C",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "fever_temp_c",
+          "operator": ">=",
+          "value": 39
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a"
+      }
     },
-    "notes": "Phù phổi cấp – sùi bọt hồng ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-05",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "LungRalesWet": "true"
+    {
+      "id": "grade_2a_vomiting_many",
+      "name": "Độ 2a - Sốt > 2 ngày kèm nôn nhiều",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "vomiting_many",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "field": "fever_days",
+          "operator": ">",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a"
+      }
     },
-    "notes": "Phù phổi cấp – ran ẩm phổi ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-06",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "PulseAbsent": "true"
+    {
+      "id": "grade_2a_lethargy",
+      "name": "Độ 2a - Sốt > 2 ngày kèm lừ đừ",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "lethargy",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "field": "fever_days",
+          "operator": ">",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a"
+      }
     },
-    "notes": "Sốc – mạch không bắt được ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-07",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "BPUnrecordable": "true"
+    {
+      "id": "grade_2a_sleep_difficulty",
+      "name": "Độ 2a - Sốt > 2 ngày kèm khó ngủ",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "sleep_difficulty",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "field": "fever_days",
+          "operator": ">",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a"
+      }
     },
-    "notes": "Sốc – huyết áp không đo được ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-08",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "SBP_mmHg": "<70",
-      "AgeMonthsCond": "<12m"
+    {
+      "id": "grade_2a_irritable",
+      "name": "Độ 2a - Sốt > 2 ngày kèm quấy khóc vô cớ",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "irritable",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "field": "fever_days",
+          "operator": ">",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a"
+      }
     },
-    "notes": "SBP <70 mmHg nếu <12 tháng ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "04-09",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "SBP_mmHg": "<80",
-      "AgeMonthsCond": "≥12m"
+    {
+      "id": "grade_2b1_1",
+      "name": "Độ 2b1 - Giật mình ghi nhận lúc khám",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "startle_observed",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b1"
+      }
     },
-    "notes": "SBP <80 mmHg nếu ≥12 tháng ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "4-10",
-    "result": "4",
-    "priority": 400,
-    "when": {
-      "PulsePressure": "<25"
+    {
+      "id": "grade_2b1_2",
+      "name": "Độ 2b1 - Giật mình ≥ 2 lần/30 phút",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "startle_per_30min",
+          "operator": ">=",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b1"
+      }
     },
-    "notes": "Chênh áp (PulsePressure) <25 mmHg ⇒ Độ 4",
-    "source": "QĐ 292 – II.6 (Độ 4)"
-  },
-  {
-    "id": "03-01",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "HR (không sốt)": ">170"
+    {
+      "id": "grade_2b1_3a",
+      "name": "Độ 2b1 - Co giật (ngủ gà)",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "seizure_history",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b1"
+      }
     },
-    "notes": "Mạch >170/ph (không sốt) ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-02",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "SBP_HighForAge": "true"
+    {
+      "id": "grade_2b1_3b",
+      "name": "Độ 2b1 - Mạch > 130 lần/phút khi không sốt",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "hr_no_fever",
+          "operator": ">",
+          "value": 130
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b1"
+      }
     },
-    "notes": "HA tâm thu tăng theo tuổi ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-03",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "RR_HighForAge": "true"
+    {
+      "id": "grade_2b2_fever",
+      "name": "Độ 2b2 - Sốt ≥ 39°C không đáp ứng hạ sốt",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "antipyretic_no_response",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "field": "fever_temp_c",
+          "operator": ">=",
+          "value": 39
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "Thở nhanh theo tuổi ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-04",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "StridorInsp": "true"
+    {
+      "id": "grade_2b2_hr150",
+      "name": "Độ 2b2 - Mạch > 150 lần/phút khi không sốt",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "hr_no_fever",
+          "operator": ">",
+          "value": 150
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "Khó thở/thở rít thì hít ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-05",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "ShallowBreath": "true"
+    {
+      "id": "grade_2b2_ataxia",
+      "name": "Độ 2b2 - Thất điều: run chi, run người, đi loạng choạng",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "ataxia",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "Thở nông ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-06",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "AbdominalBreath": "true"
+    {
+      "id": "grade_2b2_nystagmus_strabismus",
+      "name": "Độ 2b2 - Rung giật nhãn cầu, lác mắt",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "nystagmus_strabismus",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "Thở bụng ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-07",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "ChestRetraction": "true"
+    {
+      "id": "grade_2b2_limb_weakness",
+      "name": "Độ 2b2 - Yếu chi hoặc liệt chi",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "limb_weakness",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "Rút lõm ngực ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-08",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "SpO₂": "<94"
+    {
+      "id": "grade_2b2_cranial_nerve_palsy",
+      "name": "Độ 2b2 - Liệt thần kinh sọ: nuốt sặc, thay đổi giọng nói",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "cranial_nerve_palsy",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "SpO₂ <94% ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "03-09",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "MottledSkin": "true"
+    {
+      "id": "grade_2b2_hypertonia",
+      "name": "Độ 2b2 - Tăng trương lực cơ",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "hypertonia",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "Da nổi bông ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "3-10",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "ColdExtOrSweat": "true"
+    {
+      "id": "grade_2b2_gcs",
+      "name": "Độ 2b2 - Glasgow Coma Scale < 10",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "gcs",
+          "operator": "<",
+          "value": 10
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "Vã mồ hôi/chi lạnh ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "3-11",
-    "result": "3",
-    "priority": 300,
-    "when": {
-      "CRTsec": ">2"
+    {
+      "id": "grade_2b2_avpu",
+      "name": "Độ 2b2 - AVPU = P",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "avpu_P",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b2"
+      }
     },
-    "notes": "CRT >2 giây ⇒ Độ 3",
-    "source": "QĐ 292 – II.6 (Độ 3)"
-  },
-  {
-    "id": "2b-G2-01",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "Nystagmus": "true"
+    {
+      "id": "grade_3_hr170",
+      "name": "Độ 3 - Mạch > 170 lần/phút khi không sốt",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "hr_no_fever",
+          "operator": ">",
+          "value": 170
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3"
+      }
     },
-    "notes": "Rung giật nhãn cầu ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-02",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "Ataxia": "true"
+    {
+      "id": "grade_3_sbp_100",
+      "name": "Độ 3 - HA tâm thu ≥ 100 mmHg (Trẻ < 12 tháng)",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "sbp",
+          "operator": ">=",
+          "value": 100
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3"
+      }
     },
-    "notes": "Thất điều ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-03",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "LimbWeakness": "true"
+    {
+      "id": "grade_3_sbp_110",
+      "name": "Độ 3 - HA tâm thu ≥ 110 mmHg (Trẻ 12-24 tháng)",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "sbp",
+          "operator": ">=",
+          "value": 110
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3"
+      }
     },
-    "notes": "Yếu/liệt chi ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-04",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "CranialNervePalsy": "true"
+    {
+      "id": "grade_3_sbp_115",
+      "name": "Độ 3 - HA tâm thu ≥ 115 mmHg (Trẻ ≥ 24 tháng)",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "sbp",
+          "operator": ">=",
+          "value": 115
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3"
+      }
     },
-    "notes": "Liệt TK sọ ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-05",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "Hypertonia": "true"
+    {
+      "id": "grade_3_resp",
+      "name": "Độ 3 - Thở nhanh/khó thở/thở rít",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "resp_distress",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3"
+      }
     },
-    "notes": "Tăng trương lực ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-06",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "Seizure": "true"
+    {
+      "id": "grade_3_spo2",
+      "name": "Độ 3 - SpO2 < 94%",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "spo2",
+          "operator": "<",
+          "value": 94
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3"
+      }
     },
-    "notes": "Co giật ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-07",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "GCS": "<10"
+    {
+      "id": "grade_3_mottled",
+      "name": "Độ 3 - Da nổi bông (vân tím), vã mồ hôi, chi lạnh",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "mottled_sweat_cold",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3"
+      }
     },
-    "notes": "Rối loạn tri giác GCS<10 ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-08",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "AVPU": "{P,U}"
+    {
+      "id": "grade_4_apnea",
+      "name": "Độ 4 - Ngưng thở, rối loạn nhịp thở",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "apnea_irregular_breath",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
     },
-    "notes": "AVPU = P/U ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G2-09",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "HR (không sốt)": ">150"
+    {
+      "id": "grade_4_cyanosis",
+      "name": "Độ 4 - Tím tái toàn thân",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "cyanosis",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
     },
-    "notes": "Mạch >150 (không sốt) ⇒ 2b (nhóm 2)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 2)"
-  },
-  {
-    "id": "2b-G1-01",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "StartleObserved": "true"
+    {
+      "id": "grade_4_spo2",
+      "name": "Độ 4 - SpO2 < 92%",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "spo2",
+          "operator": "<",
+          "value": 92
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
     },
-    "notes": "Giật mình ghi nhận lúc khám ⇒ 2b (nhóm 1)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 1)"
-  },
-  {
-    "id": "2b-G1-02",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "StartleHist/30’": "≥2"
+    {
+      "id": "grade_4_pulmonary_edema",
+      "name": "Độ 4 - Phù phổi cấp",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "pulmonary_edema",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
     },
-    "notes": "Giật mình ≥2/30’ ⇒ 2b (nhóm 1)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 1)"
-  },
-  {
-    "id": "2b-G1-03",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "StartleHist/30’": "≥1",
-      "Somnolent": "true"
+    {
+      "id": "grade_4_shock_1",
+      "name": "Độ 4 - Sốc: Mạch không bắt được, HA không đo được",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "shock_pulse_absent",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
     },
-    "notes": "Giật mình kèm ngủ gà ⇒ 2b (nhóm 1)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 1)"
-  },
-  {
-    "id": "2b-G1-04",
-    "result": "2b",
-    "priority": 250,
-    "when": {
-      "TempC": "≤38",
-      "HR (không sốt)": ">130"
+    {
+      "id": "grade_4_shock_sbp_70",
+      "name": "Độ 4 - Sốc: HA tâm thu < 70 mmHg (Trẻ < 12 tháng)",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "sbp",
+          "operator": "<",
+          "value": 70
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
     },
-    "notes": "Mạch >130 khi không sốt ⇒ 2b (nhóm 1)",
-    "source": "QĐ 292 – II.6 (Độ 2b, nhóm 1)"
-  },
-  {
-    "id": "2a-01",
-    "result": "2a",
-    "priority": 200,
-    "when": {
-      "StartleObserved": "false",
-      "StartleHist/30’": "1",
-      "Somnolent": "false",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
+    {
+      "id": "grade_4_shock_sbp_80",
+      "name": "Độ 4 - Sốc: HA tâm thu < 80 mmHg (Trẻ ≥ 12 tháng)",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "sbp",
+          "operator": "<",
+          "value": 80
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
     },
-    "notes": "Giật mình <2/30’ & không ngủ gà – chỉ số an toàn ⇒ 2a",
-    "source": "QĐ 292 – II.6 (Độ 2a)"
-  },
-  {
-    "id": "2a-02",
-    "result": "2a",
-    "priority": 200,
-    "when": {
-      "TempC": ">=39",
-      "StartleObserved": "false",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
-    },
-    "notes": "Sốt ≥39°C ⇒ 2a",
-    "source": "QĐ 292 – II.6 (Độ 2a)"
-  },
-  {
-    "id": "2a-03",
-    "result": "2a",
-    "priority": 200,
-    "when": {
-      "FeverDays": ">2",
-      "VomitPerHour": ">2/h",
-      "StartleObserved": "false",
-      "StartleHist/30’": "0",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
-    },
-    "notes": "Sốt >2 ngày + nôn >2/h ⇒ 2a",
-    "source": "QĐ 292 – II.6 (Độ 2a)"
-  },
-  {
-    "id": "2a-04",
-    "result": "2a",
-    "priority": 200,
-    "when": {
-      "FeverDays": ">2",
-      "StartleObserved": "false",
-      "StartleHist/30’": "0",
-      "Somnolent": "true",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
-    },
-    "notes": "Sốt kéo dài + ngủ gà ⇒ 2a",
-    "source": "QĐ 292 – II.6 (Độ 2a)"
-  },
-  {
-    "id": "2a-05",
-    "result": "2a",
-    "priority": 200,
-    "when": {
-      "FeverDays": ">2",
-      "StartleObserved": "false",
-      "StartleHist/30’": "0",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
-    },
-    "notes": "Sốt kéo dài + bứt rứt/kích thích ⇒ 2a",
-    "source": "QĐ 292 – II.6 (Độ 2a)"
-  },
-  {
-    "id": "01-01",
-    "result": "1",
-    "priority": 100,
-    "when": {
-      "RashHF": "true",
-      "StartleObserved": "false",
-      "StartleHist/30’": "<2",
-      "Somnolent": "false",
-      "Nystagmus": "không",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
-    },
-    "notes": "Có ban – không có dấu hiệu nâng bậc ⇒ 1",
-    "source": "QĐ 292 – II.6 (Độ 1) + guard"
-  },
-  {
-    "id": "01-02",
-    "result": "1",
-    "priority": 100,
-    "when": {
-      "OralUlcer": "true",
-      "StartleObserved": "false",
-      "StartleHist/30’": "<2",
-      "Somnolent": "false",
-      "Nystagmus": "không",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
-    },
-    "notes": "Có loét miệng – không có dấu hiệu nâng bậc ⇒ 1",
-    "source": "QĐ 292 – II.6 (Độ 1) + guard"
-  },
-  {
-    "id": "01-03",
-    "result": "1",
-    "priority": 100,
-    "when": {
-      "RashHF": "true",
-      "OralUlcer": "true",
-      "StartleObserved": "false",
-      "StartleHist/30’": "<2",
-      "Somnolent": "false",
-      "Nystagmus": "không",
-      "GCS": ">=10",
-      "AVPU": "{A,V}",
-      "HR (không sốt)": "<=130",
-      "SpO₂": ">=94",
-      "CRTsec": "<=2"
-    },
-    "notes": "Có ban + loét – không có dấu hiệu nâng bậc ⇒ 1",
-    "source": "QĐ 292 – II.6 (Độ 1) + guard"
-  }
-]
+    {
+      "id": "grade_4_shock_pp",
+      "name": "Độ 4 - Sốc: Hiệu áp ≤ 25 mmHg",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "pulse_pressure",
+          "operator": "<=",
+          "value": 25
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4"
+      }
+    }
+  ],
+  "intermediate_rules": []
+}

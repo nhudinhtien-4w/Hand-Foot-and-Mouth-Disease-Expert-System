@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Chẩn Đoán Bệnh Tay-Chân-Miệng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 Hệ Thống Chẩn Đoán Bệnh Tay-Chân-Miệng</h1>
+            <p class="subtitle">Forward Chaining Expert System</p>
+        </header>
+
+        <div class="main-content">
+            <div class="input-section">
+                <h2>📋 Nhập Thông Tin Bệnh Nhân</h2>
+                
+                <!-- Thông tin cơ bản -->
+                <div class="form-group">
+                    <h3>👤 Thông tin cơ bản</h3>
+                    <div class="input-row">
+                        <label>
+                            <span>Tuổi (năm):</span>
+                            <input type="number" id="age_years" min="0" max="15" placeholder="VD: 2">
+                        </label>
+                        <label>
+                            <span>Tháng tuổi (tháng):</span>
+                            <input type="number" id="age_months_input" min="0" max="11" placeholder="VD: 6">
+                        </label>
+                    </div>
+                    <div class="input-row">
+                        <small style="color: #666; font-style: italic;">
+                            * Đối với trẻ dưới 1 tuổi: nhập 0 năm và số tháng tương ứng
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Triệu chứng da niêm mạc -->
+                <div class="form-group">
+                    <h3>🩹 Triệu chứng da và niêm mạc</h3>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rash_hand_foot_mouth">
+                            <span>Ban tay chân miệng</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="mouth_ulcer">
+                            <span>Loét miệng</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="mottled_sweat_cold">
+                            <span>Da nổi vân tím/Đổ mồ hôi lạnh</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="cyanosis">
+                            <span>Tím tái toàn thân</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Triệu chứng cơ thể -->
+                <div class="form-group">
+                    <h3>🌡️ Triệu chứng cơ thể</h3>
+                    <div class="input-row">
+                        <label>
+                            <span>Nhiệt độ sốt (°C):</span>
+                            <input type="number" id="fever_temp_c" min="35" max="42" step="0.1" placeholder="VD: 39.5">
+                        </label>
+                        <label>
+                            <span>Số ngày sốt:</span>
+                            <input type="number" id="fever_days" min="0" max="30" placeholder="VD: 3">
+                        </label>
+                    </div>
+                    <div class="input-row">
+                        <label>
+                            <span>Nhịp tim không sốt (bpm):</span>
+                            <input type="number" id="hr_no_fever" min="60" max="200" placeholder="VD: 150">
+                        </label>
+                        <label>
+                            <span>GCS:</span>
+                            <input type="number" id="gcs" min="3" max="15" placeholder="VD: 13">
+                        </label>
+                    </div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="vomiting_many">
+                            <span>Nôn nhiều</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lethargy">
+                            <span>Ngủ nhiều</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="sleep_difficulty">
+                            <span>Khó ngủ</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="irritable">
+                            <span>Quấy khóc</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="antipyretic_no_response">
+                            <span>Hạ sốt không đáp ứng</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Triệu chứng thần kinh -->
+                <div class="form-group">
+                    <h3>🧠 Triệu chứng thần kinh</h3>
+                    <div class="input-row">
+                        <label>
+                            <span>Giật mình/30 phút:</span>
+                            <input type="number" id="startle_per_30min" min="0" max="10" placeholder="VD: 2">
+                        </label>
+                    </div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="startle_observed">
+                            <span>Giật mình (quan sát lúc khám)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="seizure_history">
+                            <span>Co giật</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="ataxia">
+                            <span>Loạng choạng</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="nystagmus_strabismus">
+                            <span>Rung giật nhãn cầu/Lác mắt</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="limb_weakness">
+                            <span>Yếu chi</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="cranial_nerve_palsy">
+                            <span>Liệt thần kinh sọ</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="hypertonia">
+                            <span>Tăng trương lực cơ</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="avpu_P">
+                            <span>AVPU = P</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Triệu chứng tim mạch và hô hấp -->
+                <div class="form-group">
+                    <h3>❤️ Triệu chứng tim mạch và hô hấp</h3>
+                    <div class="input-row">
+                        <label>
+                            <span>Huyết áp tâm thu (mmHg):</span>
+                            <input type="number" id="sbp" min="40" max="200" placeholder="VD: 80">
+                        </label>
+                        <label>
+                            <span>SpO₂ (%):</span>
+                            <input type="number" id="spo2" min="70" max="100" step="0.1" placeholder="VD: 95">
+                        </label>
+                    </div>
+                    <div class="input-row">
+                        <label>
+                            <span>Chênh lệch huyết áp (mmHg):</span>
+                            <input type="number" id="pulse_pressure" min="0" max="100" placeholder="VD: 25">
+                        </label>
+                    </div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="resp_distress">
+                            <span>Thở nhanh/Khó thở/Thở rít</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="apnea_irregular_breath">
+                            <span>Ngừng thở/Rối loạn nhịp thở</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="pulmonary_edema">
+                            <span>Phù phổi cấp</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="shock_pulse_absent">
+                            <span>Mạch không bắt được/ Không đo được HA</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button onclick="diagnose()" class="btn-primary">🔍 Chẩn Đoán</button>
+                    <button onclick="clearForm()" class="btn-secondary">🔄 Xóa Form</button>
+                    <button onclick="loadExample()" class="btn-secondary">💡 Ví dụ</button>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <h2>📊 Kết Quả Chẩn Đoán</h2>
+                <div id="result-container">
+                    <div class="empty-state">
+                        <p>Nhập thông tin bệnh nhân và nhấn "Chẩn Đoán" để xem kết quả</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
