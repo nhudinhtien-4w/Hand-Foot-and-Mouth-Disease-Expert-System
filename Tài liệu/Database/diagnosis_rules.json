@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "description": "Hệ luật chẩn đoán lâm sàng bệnh Tay Chân Miệng (TCM)",
+    "version": "1.0",
+    "total_rules": 4,
+    "author": "CS217 Team"
+  },
+  "clinical_questions": {
+    "basic_info": [
+      {
+        "id": "age_months",
+        "question": "Tuổi của trẻ (tháng)?",
+        "type": "number",
+        "required": true,
+        "validation": {
+          "min": 0,
+          "max": 120
+        }
+      }
+    ],
+    "symptoms_stage_1": {
+      "title": "Giai đoạn khởi phát (1-2 ngày)",
+      "questions": [
+        {
+          "id": "fever_status",
+          "question": "Tình trạng sốt (nếu có)?",
+          "type": "select",
+          "required": true,
+          "options": [
+            {"value": "no_fever", "label": "Không sốt"},
+            {"value": "mild_fever", "label": "Sốt nhẹ (< 38.5°C)"},
+            {"value": "high_fever", "label": "Sốt cao (≥ 38.5°C)"}
+          ]
+        },
+        {
+          "id": "fatigue",
+          "question": "Trẻ có biểu hiện mệt mỏi không?",
+          "type": "yes_no",
+          "required": false
+        },
+        {
+          "id": "sore_throat",
+          "question": "Trẻ có đau họng không?",
+          "type": "yes_no",
+          "required": false
+        },
+        {
+          "id": "poor_appetite",
+          "question": "Trẻ có biếng ăn không?",
+          "type": "yes_no",
+          "required": false
+        },
+        {
+          "id": "diarrhea",
+          "question": "Trẻ có tiêu chảy không?",
+          "type": "yes_no",
+          "required": false
+        },
+        {
+          "id": "contact_patient",
+          "question": "Trẻ có tiếp xúc với người bị TCM không?",
+          "type": "yes_no",
+          "required": false
+        }
+      ]
+    },
+    "symptoms_stage_2": {
+      "title": "Giai đoạn toàn phát (3-10 ngày)",
+      "questions": [
+        {
+          "id": "mouth_ulcer",
+          "question": "Trẻ có loét miệng không? (Vết loét đỏ hoặc phỏng nước đường kính 2-3mm ở niêm mạc miệng, lợi, lưỡi)",
+          "type": "yes_no",
+          "required": true
+        },
+        {
+          "id": "rash_hand_foot_mouth",
+          "question": "Trẻ có sang thương da không? (Hồng ban hoặc bóng nước ở lòng bàn tay, lòng bàn chân, khuỷu tay, gối, mông)",
+          "type": "yes_no",
+          "required": true
+        },
+        {
+          "id": "rash_typical_locations",
+          "question": "Phát ban có xuất hiện ở lòng bàn tay / lòng bàn chân / mông không?",
+          "type": "yes_no",
+          "depends_on": "rash_hand_foot_mouth",
+          "required": false
+        }
+      ]
+    },
+    "lab_tests": {
+      "title": "Xét nghiệm cận lâm sàng (nếu có)",
+      "questions": [
+        {
+          "id": "wbc_count",
+          "question": "Bạch cầu (WBC) - G/L?",
+          "type": "number",
+          "required": false,
+          "validation": {
+            "min": 0,
+            "max": 50
+          }
+        },
+        {
+          "id": "blood_glucose",
+          "question": "Đường huyết - mg%?",
+          "type": "number",
+          "required": false,
+          "validation": {
+            "min": 0,
+            "max": 500
+          }
+        },
+        {
+          "id": "platelet_count",
+          "question": "Tiểu cầu (Platelet) - G/L?",
+          "type": "number",
+          "required": false,
+          "validation": {
+            "min": 0,
+            "max": 1000
+          }
+        },
+        {
+          "id": "rt_pcr_result",
+          "question": "Có kết quả RT-PCR dương tính với virus đường ruột không?",
+          "type": "yes_no",
+          "required": false
+        }
+      ]
+    }
+  },
+  "conclusion_rules": [
+    {
+      "id": "R0-1",
+      "name": "Chẩn đoán HFMD điển hình",
+      "priority": 10,
+      "conditions": [
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "field": "mouth_ulcer",
+              "operator": "==",
+              "value": true
+            },
+            {
+              "field": "rash_hand_foot_mouth",
+              "operator": "==",
+              "value": true
+            }
+          ]
+        },
+        {
+          "field": "age_months",
+          "operator": "<",
+          "value": 60
+        }
+      ],
+      "conclusion": {
+        "has_hfmd": true,
+        "confidence": "Cao",
+        "diagnosis_type": "Điển hình",
+        "message": "Bệnh nhân có biểu hiện điển hình của TCM: loét miệng và/hoặc phát ban tay chân miệng"
+      }
+    },
+    {
+      "id": "R0-2",
+      "name": "Chẩn đoán TCM với yếu tố dịch tễ",
+      "priority": 8,
+      "conditions": [
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "field": "fever_status",
+              "operator": "in",
+              "value": ["mild_fever", "high_fever"]
+            },
+            {
+              "field": "sore_throat",
+              "operator": "==",
+              "value": true
+            },
+            {
+              "field": "fatigue",
+              "operator": "==",
+              "value": true
+            }
+          ]
+        },
+        {
+          "field": "age_months",
+          "operator": "<",
+          "value": 60
+        },
+        {
+          "field": "contact_patient",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "has_hfmd": true,
+        "confidence": "Trung bình",
+        "diagnosis_type": "Có yếu tố dịch tễ",
+        "message": "Có triệu chứng lâm sàng và yếu tố dịch tễ hỗ trợ chẩn đoán TCM",
+        "recommendation": "Nên xét nghiệm RT-PCR để xác định"
+      }
+    },
+    {
+      "id": "R0-4",
+      "name": "Cảnh báo biến chứng sớm",
+      "priority": 9,
+      "conditions": [
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "field": "wbc_count",
+              "operator": ">",
+              "value": 16
+            },
+            {
+              "field": "blood_glucose",
+              "operator": ">",
+              "value": 160
+            },
+            {
+              "field": "platelet_count",
+              "operator": ">",
+              "value": 400
+            }
+          ]
+        },
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "field": "mouth_ulcer",
+              "operator": "==",
+              "value": true
+            },
+            {
+              "field": "rash_hand_foot_mouth",
+              "operator": "==",
+              "value": true
+            },
+            {
+              "field": "rt_pcr_result",
+              "operator": "==",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "has_hfmd": true,
+        "complication_risk": "Cao",
+        "confidence": "Cao",
+        "message": "Xét nghiệm bất thường: nguy cơ biến chứng cao",
+        "recommendation": "THEO DÕI CHẶT CHẼ - Nhập viện để theo dõi biến chứng"
+      }
+    },
+    {
+      "id": "R0-5",
+      "name": "Chẩn đoán xác định bằng RT-PCR",
+      "priority": 10,
+      "conditions": [
+        {
+          "field": "rt_pcr_result",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "has_hfmd": true,
+        "confidence": "Xác định",
+        "diagnosis_type": "Xác định bằng xét nghiệm",
+        "message": "RT-PCR dương tính với virus đường ruột - CHẨN ĐOÁN XÁC ĐỊNH TCM"
+      }
+    }
+  ],
+  "intermediate_rules": [],
+  "no_disease_conditions": {
+    "message": "Không đủ bằng chứng để chẩn đoán TCM",
+    "recommendations": [
+      "Theo dõi thêm triệu chứng",
+      "Tái khám nếu xuất hiện loét miệng hoặc phát ban",
+      "Nếu nghi ngờ, làm xét nghiệm RT-PCR"
+    ]
+  }
+}

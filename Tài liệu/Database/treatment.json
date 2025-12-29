@@ -1,0 +1,339 @@
+{
+  "treatment_rules": [
+    {
+      "rule_id": "treatment_degree_1",
+      "disease_level": "1",
+      "disease_name": "Tay chân miệng không có biến chứng",
+      "treatment_location": "Điều trị ngoại trú và theo dõi tại y tế cơ sở",
+      "treatments": [
+        {
+          "category": "Dinh dưỡng",
+          "interventions": [
+            "Dinh dưỡng đầy đủ theo tuổi, thức ăn lỏng, dễ tiêu, dễ nguội mát, chia nhiều bữa nhỏ",
+            "Trẻ còn bú cần tiếp tục cho ăn sữa mẹ"
+          ]
+        },
+        {
+          "category": "Liều lượng thuốc sử dụng",
+          "medications": [
+            {
+              "name": "Paracetamol",
+              "dosage": "10-15 mg/kg/lần (uống) hoặc 10-15 mg/kg/lần (đặt hậu môn) mỗi 4-6 giờ"
+            },
+            {
+              "name": "Ibuprofen",
+              "dosage": "5-10 mg/kg/lần mỗi 6-8 giờ"
+            }
+          ]
+        },
+        {
+          "category": "Chăm sóc tại chỗ",
+          "interventions": [
+            "Làm dịu vết loét miệng bằng thuốc bôi niêm mạc đường tiêu hóa",
+            "Vệ sinh răng miệng",
+            "Chăm sóc thương da: không làm vỡ các mụn nước, có thể bôi dung dịch sát khuẩn nhẹ"
+          ]
+        },
+        {
+          "category": "Chế độ",
+          "interventions": [
+            "Nghỉ ngơi, tránh kích thích",
+            "Cho trẻ nghỉ học, sau 7-10 ngày kể từ khi phát bệnh mới cho trẻ đi học lại"
+          ]
+        },
+        {
+          "category": "Phòng lây nhiễm",
+          "interventions": [
+            "Tránh lây lan bệnh cho các thành viên khác trong gia đình",
+            "Không dùng chung đồ dùng cá nhân",
+            "Rửa tay trước và sau chăm sóc trẻ",
+            "Vệ sinh môi trường"
+          ]
+        },
+        {
+          "category": "Theo dõi",
+          "interventions": [
+            "Tái khám mỗi 1-2 ngày trong 7-10 ngày đầu của bệnh",
+            "Trẻ có sốt phải tái khám mỗi ngày"
+          ]
+        },
+        {
+          "category": "Nhập viện khi",
+          "criteria": [
+            "Người nhà lo lắng",
+            "Không đủ điều kiện theo dõi"
+          ]
+        },
+        {
+          "category": "Dấu hiệu cần tái khám ngay",
+          "warning_signs": [
+            "Sốt ≥ 39°C hoặc kéo dài trên 48 giờ",
+            "Nôn ói nhiều",
+            "Lừ đừ hoặc kích thích",
+            "Không bú hoặc ăn bú quá ít",
+            "Giật mình",
+            "Thở nhanh, khó thở",
+            "Da nổi vân tím (nổi bông)",
+            "Hôn mê, co giật",
+            "Trẻ có dấu hiệu bất thường hoặc cha mẹ lo lắng"
+          ]
+        }
+      ],
+      "reference": "Mục 3.1, trang 12 của Quyết định về việc ban hành Hướng dẫn chẩn đoán, điều trị bệnh TCM"
+    },
+    {
+      "rule_id": "treatment_degree_2a",
+      "disease_level": "2a",
+      "disease_name": "Tay chân miệng có biến chứng thần kinh",
+      "treatment_location": "Bệnh viện",
+      "treatments": [
+        {
+          "category": "Điều trị cơ bản",
+          "interventions": [
+            "Điều trị như độ 1"
+          ]
+        },
+        {
+          "category": "Liều lượng thuốc sử dụng",
+          "medications": [
+            {
+              "name": "Phenobarbital",
+              "dosage": "Uống 5-7 mg/kg/ngày chia 2 lần"
+            },
+            {
+              "name": "Paracetamol phối hợp Ibuprofen (nếu sốt không đáp ứng)",
+              "dosage": "Ibuprofen 5-10 mg/kg/lần mỗi 6-8 giờ (không dùng cho trẻ < 6 tháng)",
+              "note": "Phối hợp khi sốt không đáp ứng với Paracetamol"
+            },
+            {
+              "name": "Acetaminophen",
+              "dosage": "Liều tối đa 60 mg/kg/ngày (nếu sốt không đáp ứng)"
+            }
+          ]
+        },
+        {
+          "category": "Theo dõi",
+          "interventions": [
+            "Theo dõi sinh hiệu: mạch, nhiệt độ, nhịp thở, tri giác, SpO₂ mỗi 6-12 giờ",
+            "Theo dõi sát để phát hiện dấu hiệu chuyển độ",
+            "Hướng dẫn người nhà nhận biết dấu hiệu chuyển độ và báo bác sĩ và điều dưỡng"
+          ]
+        },
+        {
+          "category": "Báo ngay cho bác sĩ",
+          "criteria": "Theo dõi mỗi 4-6 giờ trong 24 giờ đầu khi có ≥ 1 yếu tố nguy cơ",
+          "risk_factors": [
+            "Lừ đừ, khóc thét trên 3 ngày hoặc sốt cao ≥ 39°C",
+            "Còn biểu hiện giật mình trong 24-72 giờ trước đó",
+            "Nôn ói nhiều",
+            "Đường huyết ≥ 160 mg% (8,9 mmol/L)",
+            "Bạch cầu ≥ 16 G/L",
+            "Tiểu cầu > 400 G/L"
+          ]
+        }
+      ],
+      "reference": "Mục 3.2.1, trang 13 của Quyết định về việc ban hành Hướng dẫn chẩn đoán, điều trị bệnh TCM"
+    },
+    {
+      "rule_id": "treatment_degree_2b",
+      "disease_level": "2b",
+      "disease_name": "Tay chân miệng có biến chứng thần kinh nặng",
+      "treatment_location": "Điều trị tại phòng cấp cứu hồi sức",
+      "treatments": [
+        {
+          "category": "Tư thế",
+          "interventions": [
+            "Nằm đầu cao 30°"
+          ]
+        },
+        {
+          "category": "Hô hấp",
+          "interventions": [
+            "Thở oxy qua mặt nạ 6 lít/phút"
+          ]
+        },
+        {
+          "category": "Liều lượng thuốc sử dụng",
+          "medications": [
+            {
+              "name": "Hạ sốt",
+              "dosage": "Hạ sốt nếu trẻ có sốt (dùng Paracetamol hoặc Ibuprofen như độ 1)"
+            },
+            {
+              "name": "Phenobarbital",
+              "dosage": "10-20 mg/kg truyền tĩnh mạch trong 30 phút",
+              "note": "Lặp lại sau 8-12 giờ khi cần (tổng liều không quá 40 mg/kg/ngày)"
+            }
+          ]
+        }
+      ],
+      "reference": "Mục 3.2.2, trang 13-14 của Quyết định về việc ban hành Hướng dẫn chẩn đoán, điều trị bệnh TCM"
+    },
+    {
+      "rule_id": "treatment_degree_3",
+      "disease_level": "3",
+      "disease_name": "Tay chân miệng biến chứng rối loạn thần kinh thực vật nặng",
+      "treatment_location": "Điều trị tại đơn vị hồi sức tích cực",
+      "treatments": [
+        {
+          "category": "Hô hấp",
+          "interventions": [
+            "Thở oxy qua mặt nạ 6 lít/phút",
+            "Sau 30-60 phút nếu đáp ứng kém nên sử dụng máy thở"
+          ]
+        },
+        {
+          "category": "Chỉ định thở máy",
+          "criteria": [
+            "Bệnh tay chân miệng độ 4",
+            "Bệnh tay chân miệng độ 3 kèm theo một trong các biểu hiện sau:"
+          ],
+          "indications_degree_3": [
+            "Thở nhanh > 70 lần/phút (khi trẻ nằm yên, không sốt)",
+            "Rối loạn thần kinh vật nặng: SpO₂ dao động, da xanh tái, vã mồ hôi, mạch nhanh > 180 lần/phút (trẻ nằm yên, không sốt)",
+            "Gồng chi hoặc hôn mê (Glasgow < 10 hoặc mức P thang điểm AVPU)"
+          ]
+        },
+        {
+          "category": "Liều lượng thuốc sử dụng",
+          "medications": [
+            {
+              "name": "Phenobarbital",
+              "dosage": "10-20 mg/kg truyền tĩnh mạch trong 30 phút",
+              "note": "Lặp lại sau 8-12 giờ khi cần (tổng liều không quá 40 mg/kg/ngày)"
+            },
+            {
+              "name": "Immunoglobulin (Gamma globulin)",
+              "dosage": "1 g/kg/ngày truyền tĩnh mạch chậm trong 6-12 giờ",
+              "note": "Sử dụng cân nặng hiệu chỉnh ở trẻ dư cân béo phì. Chỉ định liều 2 sau 24 giờ nếu diễn biến nặng hơn"
+            },
+            {
+              "name": "Dobutamin",
+              "indication": "Khi suy tim mạch nhanh > 170 lần/phút và không có tăng huyết áp",
+              "dosage": "Liều khởi đầu 5 µg/kg/phút truyền tĩnh mạch, tăng dần 1-2,5 µg/kg/phút mỗi 15 phút cho đến khi cải thiện lâm sàng",
+              "note": "Liều tối đa 20 µg/kg/phút (không dùng Dopamin)"
+            },
+            {
+              "name": "Milrinone",
+              "indication": "Khi tăng huyết áp, huyết áp tâm thu tăng",
+              "bp_criteria": [
+                "Trẻ dưới 12 tháng: HA ≥ 110 mmHg",
+                "Trẻ từ 12 tháng đến < 24 tháng: HA ≥ 115 mmHg",
+                "Trẻ ≥ 24 tháng: HA ≥ 120 mmHg"
+              ],
+              "dosage": "Truyền tĩnh mạch 0,4-0,75 µg/kg/phút chỉ dùng khi HA cao và trong 24-72 giờ",
+              "adjustment": "Nếu huyết áp ổn định có thể giảm liều 0,1 µg/kg/phút mỗi 30-60 phút cho đến liều hiệu chỉnh 0,25 µg/kg/phút. Nếu huyết áp ổn định có thể giảm tiếp",
+              "stop_criteria": [
+                "HA tâm thu < 90 mmHg (trẻ < 12 tháng)",
+                "HA tâm thu < 100 mmHg (trẻ ≥ 12 tháng)"
+              ]
+            },
+            {
+              "name": "Paracetamol (hạ sốt tích cực)",
+              "indication": "Sốt cao liên tục ≥ 39,5°C, không đáp ứng với thuốc hạ sốt Paracetamol kết hợp Ibuprofen và lau mát sau 12 giờ",
+              "dosage": "10-15 mg/kg/lần truyền tĩnh mạch chậm trong 15 phút",
+              "additional_measures": [
+                "Lau mát hạ sốt",
+                "Truyền dịch thẳng",
+                "Rửa dạ dày với NaCl 0,9% lạnh, kết hợp thử thách NaCl 0,9% lạnh khi còn sốt ≥ 40°C"
+              ]
+            },
+            {
+              "name": "Methylprednisolone",
+              "indication": "Nếu thất bại với tất cả các biện pháp hạ sốt (thân nhiệt vẫn còn ≥ 40°C sau 4-6 giờ)",
+              "dosage": "10 mg/kg/lần truyền tĩnh mạch chậm trong 30 phút x 2 lần/ngày",
+              "note": "Theo dõi sát HA khi truyền. Thời gian sử dụng đến khi kiểm soát được thân nhiệt, tối đa 3 ngày"
+            }
+          ]
+        },
+        {
+          "category": "Điều chỉnh nội môi",
+          "interventions": [
+            "Điều chỉnh rối loạn nước, điện giải, toan kiềm",
+            "Điều trị hạ đường huyết"
+          ]
+        }
+      ],
+      "reference": "Mục 3.3, trang 14-15-16 của Quyết định về việc ban hành Hướng dẫn chẩn đoán, điều trị bệnh TCM"
+    },
+    {
+      "rule_id": "treatment_degree_4",
+      "disease_level": "4",
+      "disease_name": "Tay chân miệng suy hô hấp tuần hoàn nặng",
+      "treatment_location": "Điều trị tại các đơn vị hồi sức tích cực",
+      "treatments": [
+        {
+          "category": "Liều lượng thuốc sử dụng",
+          "medications": [
+            {
+              "name": "An thần",
+              "options": [
+                "Midazolam 0,1 mg/kg (TM)",
+                "Diazepam 0,2 mg/kg (TMC)",
+                "Fentanyl 1-2 µg/kg"
+              ],
+              "note": "Không sử dụng Ketamin do nguy cơ tăng áp lực nội sọ"
+            },
+            {
+              "name": "Immunoglobulin (Gamma globulin)",
+              "indication": "Sau hồi sức sốc và khi huyết áp trung bình ≥ 50 mmHg",
+              "dosage": "1 g/kg/ngày truyền tĩnh mạch chậm trong 6-12 giờ",
+              "note": "Sử dụng cân nặng hiệu chỉnh ở trẻ dư cân béo phì"
+            }
+          ]
+        },
+        {
+          "category": "Cài đặt máy thở",
+          "interventions": [
+            "Cài đặt máy thở ban đầu",
+            "Điều chỉnh thông số máy thở theo chiều cao và cân nặng của trẻ",
+            "Kiểm soát áp lực, tần số thở, FiO₂, PEEP",
+            "Mục tiêu SpO₂ đạt 94-98%, PaO₂ đạt 80-100 mmHg, PaCO₂ 30-35 mmHg"
+          ]
+        },
+        {
+          "category": "Nếu tình trạng hồi sức chưa đạt theo phác đồ",
+          "interventions": [
+            "Thiết lập đường truyền trung tâm",
+            "Dobutamin",
+            "Noradrenalin/Adrenalin",
+            "Bù dịch",
+            "Theo dõi CVP",
+            "Theo dõi Lactate"
+          ]
+        },
+        {
+          "category": "Theo dõi",
+          "vital_signs_frequent": {
+            "parameters": [
+              "Mạch",
+              "Nhiệt độ",
+              "Huyết áp",
+              "Nhịp thở",
+              "Tri giác",
+              "Ran phổi",
+              "SpO₂",
+              "Nước tiểu"
+            ],
+            "frequency": "Mỗi 15-30 phút đến khi ổn định, sau đó theo dõi mỗi giờ trong 6 giờ đầu"
+          },
+          "invasive_monitoring": {
+            "parameters": [
+              "Áp lực tĩnh mạch trung tâm",
+              "Huyết áp động mạch xâm lấn"
+            ],
+            "frequency": "Mỗi 1-2 giờ"
+          }
+        }
+      ],
+      "reference": "Mục 3.4, trang 15-16-17 của Quyết định về việc ban hành Hướng dẫn chẩn đoán, điều trị bệnh TCM"
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "created_date": "2025-12-28",
+    "source": "Hướng dẫn chẩn đoán và điều trị bệnh tay chân miệng",
+    "description": "Hệ thống luật điều trị bệnh tay chân miệng theo độ nặng",
+    "note": "File này chứa thông tin điều trị chi tiết cho từng độ bệnh từ độ 1 đến độ 4"
+  }
+}

@@ -1,0 +1,356 @@
+/* CSS cho TCM Diagnosis System */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5 !important;
+    background-color: #f5f5f5 !important;
+    min-height: 100vh;
+    padding: 20px;
+    color-scheme: light !important;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+    padding: 35px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 32px rgba(52, 199, 89, 0.25);
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.main-content {
+    display: block;
+    width: 100%;
+}
+
+.input-section, .result-section {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(52, 199, 89, 0.1);
+    border: 1px solid rgba(52, 199, 89, 0.1);
+}
+
+.input-section h2, .result-section h2 {
+    color: #34c759;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group h3 {
+    color: #34c759;
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid #d4f4dd;
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+}
+
+label span {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+    font-size: 0.88em;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 2px solid #e8f5e9;
+    border-radius: 10px;
+    font-size: 0.95em;
+    transition: all 0.3s;
+    background: #fafffe;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #34c759;
+    box-shadow: 0 0 0 4px rgba(52, 199, 89, 0.1);
+    background: white;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 2px solid #e8f5e9;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #fafffe;
+}
+
+.checkbox-label:hover {
+    background: #f0f9f4;
+    border-color: #34c759;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(52, 199, 89, 0.15);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label span {
+    font-size: 0.9em;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 199, 89, 0.35);
+    background: linear-gradient(135deg, #30d158 0%, #34c759 100%);
+}
+
+.btn-secondary {
+    background: white;
+    color: #34c759;
+    border: 2px solid #e8f5e9;
+}
+
+.btn-secondary:hover {
+    background: #f0f9f4;
+    border-color: #34c759;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.15);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.result-box {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.degree-badge {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.degree-1 {
+    background: #4caf50;
+    color: white;
+}
+
+.degree-2a {
+    background: #ffc107;
+    color: #333;
+}
+
+.degree-2b {
+    background: #ff9800;
+    color: white;
+}
+
+.degree-3 {
+    background: #ff5722;
+    color: white;
+}
+
+.degree-4 {
+    background: #f44336;
+    color: white;
+}
+
+.degree-unknown {
+    background: #9e9e9e;
+    color: white;
+}
+
+.info-section {
+    background: #f0f9f4;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+    border: 1px solid #e8f5e9;
+}
+
+.info-section h3 {
+    color: #34c759;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.inference-step {
+    background: white;
+    padding: 15px;
+    border-left: 4px solid #34c759;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(52, 199, 89, 0.08);
+}
+
+.derived-fact {
+    display: inline-block;
+    background: #e8f5e9;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 0.9em;
+    color: #1b5e20;
+    border: 1px solid #c8e6c9;
+}
+
+.rule-info {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    border: 4px solid #f0f9f4;
+    border-top: 4px solid #34c759;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #f44336;
+}
+
+.success-message {
+    background: #f0f9f4;
+    color: #1b5e20;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #34c759;
+    border: 1px solid #e8f5e9;
+}
+
+.trace-details {
+    max-height: 300px;
+    overflow-y: auto;
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 0.85em;
+}
+
+.trace-line {
+    padding: 2px 0;
+    color: #555;
+}

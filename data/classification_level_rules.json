@@ -1,0 +1,760 @@
+{
+  "conclusion_rules": [
+    {
+      "id": "R1-1",
+      "name": "Độ 1 - Trẻ chỉ có loét miệng",
+      "grade": "1",
+      "priority": 0,
+      "conditions": [
+        {
+          "field": "mouth_ulcer",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "1",
+        "description": "Bệnh không biến chứng - Trẻ chỉ có loét miệng"
+      }
+    },
+    {
+      "id": "R1-2",
+      "name": "Độ 1 - Trẻ chỉ có phát ban tay chân miệng",
+      "grade": "1",
+      "priority": 0,
+      "conditions": [
+        {
+          "field": "rash_hand_foot_mouth",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "1",
+        "description": "Bệnh không biến chứng - Trẻ chỉ có phát ban tay chân miệng"
+      }
+    },
+    {
+      "id": "R1-3",
+      "name": "Độ 1 - Không có biến chứng (mặc định)",
+      "grade": "1",
+      "priority": 0,
+      "conditions": [],
+      "conclusion": {
+        "disease_level": "1",
+        "description": "Bệnh không biến chứng - Không có triệu chứng nặng"
+      }
+    },
+    {
+      "id": "R2a-1",
+      "name": "Độ 2a - Giật mình < 2 lần/30 phút (tiền sử)",
+      "grade": "2a",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "startle_per_30min",
+          "operator": "<",
+          "value": 2
+        },
+        {
+          "field": "startle_per_30min",
+          "operator": ">",
+          "value": 0
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a",
+        "description": "Biến chứng thần kinh nhẹ - Giật mình < 2 lần/30 phút (chỉ trong bệnh sử)"
+      }
+    },
+    {
+      "id": "R2a-2",
+      "name": "Độ 2a - Sốt > 39°C",
+      "grade": "2a",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "fever_temp_c",
+          "operator": ">",
+          "value": 39
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a",
+        "description": "Biến chứng thần kinh nhẹ - Sốt cao > 39°C"
+      }
+    },
+    {
+      "id": "R2a-3",
+      "name": "Độ 2a - Sốt > 2 ngày",
+      "grade": "2a",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "fever_days",
+          "operator": ">",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a",
+        "description": "Biến chứng thần kinh nhẹ - Sốt kéo dài > 2 ngày"
+      }
+    },
+    {
+      "id": "R2a-4",
+      "name": "Độ 2a - Nôn nhiều",
+      "grade": "2a",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "vomiting_many",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a",
+        "description": "Biến chứng thần kinh nhẹ - Nôn nhiều"
+      }
+    },
+    {
+      "id": "R2a-5",
+      "name": "Độ 2a - Lơ mơ",
+      "grade": "2a",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "lethargy",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a",
+        "description": "Biến chứng thần kinh nhẹ - Lơ mơ"
+      }
+    },
+    {
+      "id": "R2a-6",
+      "name": "Độ 2a - Khó ngủ",
+      "grade": "2a",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "sleep_difficulty",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a",
+        "description": "Biến chứng thần kinh nhẹ - Khó ngủ"
+      }
+    },
+    {
+      "id": "R2a-7",
+      "name": "Độ 2a - Quấy khóc vô cớ",
+      "grade": "2a",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "irritable",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2a",
+        "description": "Biến chứng thần kinh nhẹ - Quấy khóc vô cớ"
+      }
+    },
+    {
+      "id": "R2b-1",
+      "name": "Độ 2b - Giật mình ghi nhận lúc khám",
+      "grade": "2b",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "startle_observed",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Giật mình ghi nhận lúc khám"
+      }
+    },
+    {
+      "id": "R2b-2",
+      "name": "Độ 2b - Giật mình ≥ 2 lần/30 phút",
+      "grade": "2b",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "startle_per_30min",
+          "operator": ">=",
+          "value": 2
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Giật mình ≥ 2 lần/30 phút"
+      }
+    },
+    {
+      "id": "R2b-2a",
+      "name": "Độ 2b - Giật mình kèm ngủ gà",
+      "grade": "2b",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "startle_per_30min",
+          "operator": ">",
+          "value": 0
+        },
+        {
+          "field": "sleep_difficulty",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Giật mình kèm ngủ gà"
+      }
+    },
+    {
+      "id": "R2b-2b",
+      "name": "Độ 2b - Giật mình kèm mạch nhanh > 130 (không sốt)",
+      "grade": "2b",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "startle_per_30min",
+          "operator": ">",
+          "value": 0
+        },
+        {
+          "field": "hr_no_fever",
+          "operator": ">",
+          "value": 130
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Giật mình kèm mạch nhanh > 130 (không sốt)"
+      }
+    },
+    {
+      "id": "R2b-3",
+      "name": "Độ 2b - Sốt cao không đáp ứng thuốc",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "fever_temp_c",
+          "operator": ">=",
+          "value": 39
+        },
+        {
+          "field": "antipyretic_no_response",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Sốt cao ≥ 39°C không đáp ứng hạ sốt"
+      }
+    },
+    {
+      "id": "R2b-4",
+      "name": "Độ 2b - Mạch nhanh > 150 (không sốt)",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "hr_no_fever",
+          "operator": ">",
+          "value": 150
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Mạch nhanh > 150 (không sốt)"
+      }
+    },
+    {
+      "id": "R2b-5",
+      "name": "Độ 2b - Thất điều vận động",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "ataxia",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Thất điều: run chi, run người, đi loạng choạng"
+      }
+    },
+    {
+      "id": "R2b-6",
+      "name": "Độ 2b - Rối loạn nhãn cầu",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "nystagmus_strabismus",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Rung giật nhãn cầu, lác mắt"
+      }
+    },
+    {
+      "id": "R2b-7",
+      "name": "Độ 2b - Yếu hoặc liệt chi",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "limb_weakness",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Yếu hoặc liệt chi"
+      }
+    },
+    {
+      "id": "R2b-8",
+      "name": "Độ 2b - Liệt thần kinh sọ",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "cranial_nerve_palsy",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Liệt thần kinh sọ: nuốt sặc, thay đổi giọng nói"
+      }
+    },
+    {
+      "id": "R2b-9",
+      "name": "Độ 2b - Tăng trương lực cơ",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "hypertonia",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Tăng trương lực cơ"
+      }
+    },
+    {
+      "id": "R2b-10",
+      "name": "Độ 2b - Rối loạn tri giác",
+      "grade": "2b",
+      "priority": 3,
+      "conditions": [
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "field": "gcs",
+              "operator": "<",
+              "value": 10
+            },
+            {
+              "field": "avpu_P",
+              "operator": "==",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "disease_level": "2b",
+        "description": "Biến chứng thần kinh rõ - Rối loạn tri giác (Glasgow < 10 hoặc AVPU = P)"
+      }
+    },
+    {
+      "id": "R3-1",
+      "name": "Độ 3 - Mạch nhanh > 170 (không sốt)",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "hr_no_fever",
+          "operator": ">",
+          "value": 170
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Mạch nhanh > 170 (không sốt)"
+      }
+    },
+    {
+      "id": "R3-1a",
+      "name": "Độ 3 - Mạch chậm",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "type": "AND",
+              "conditions": [
+                {
+                  "field": "age_months",
+                  "operator": "<",
+                  "value": 12
+                },
+                {
+                  "field": "hr_no_fever",
+                  "operator": "<",
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "type": "AND",
+              "conditions": [
+                {
+                  "field": "age_months",
+                  "operator": ">=",
+                  "value": 12
+                },
+                {
+                  "field": "hr_no_fever",
+                  "operator": "<",
+                  "value": 80
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Mạch chậm (cần đánh giá thêm huyết áp và tri giác)"
+      }
+    },
+    {
+      "id": "R3-2",
+      "name": "Độ 3 - Tăng HA tâm thu (< 12 tháng)",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "age_months",
+          "operator": "<",
+          "value": 12
+        },
+        {
+          "field": "sbp",
+          "operator": ">=",
+          "value": 100
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Tăng HA tâm thu ≥ 100 mmHg (< 12 tháng)"
+      }
+    },
+    {
+      "id": "R3-3",
+      "name": "Độ 3 - Tăng HA tâm thu (12-24 tháng)",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "age_months",
+          "operator": ">=",
+          "value": 12
+        },
+        {
+          "field": "age_months",
+          "operator": "<",
+          "value": 24
+        },
+        {
+          "field": "sbp",
+          "operator": ">=",
+          "value": 110
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Tăng HA tâm thu ≥ 110 mmHg (12-24 tháng)"
+      }
+    },
+    {
+      "id": "R3-4",
+      "name": "Độ 3 - Tăng HA tâm thu (≥ 24 tháng)",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "age_months",
+          "operator": ">=",
+          "value": 24
+        },
+        {
+          "field": "sbp",
+          "operator": ">=",
+          "value": 115
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Tăng HA tâm thu ≥ 115 mmHg (≥ 24 tháng)"
+      }
+    },
+    {
+      "id": "R3-5",
+      "name": "Độ 3 - Khó thở",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "resp_distress",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Khó thở"
+      }
+    },
+    {
+      "id": "R3-5a",
+      "name": "Độ 3 - Thở nhanh",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "type": "OR",
+          "conditions": [
+            {
+              "type": "AND",
+              "conditions": [
+                {
+                  "field": "age_months",
+                  "operator": "<",
+                  "value": 12
+                },
+                {
+                  "field": "respiratory_rate",
+                  "operator": ">",
+                  "value": 50
+                }
+              ]
+            },
+            {
+              "type": "AND",
+              "conditions": [
+                {
+                  "field": "age_months",
+                  "operator": ">=",
+                  "value": 12
+                },
+                {
+                  "field": "respiratory_rate",
+                  "operator": ">",
+                  "value": 40
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Thở nhanh"
+      }
+    },
+    {
+      "id": "R3-5b",
+      "name": "Độ 3 - Thở rít",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "stridor",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Thở rít"
+      }
+    },
+    {
+      "id": "R3-6",
+      "name": "Độ 3 - SpO2 < 94%",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "spo2",
+          "operator": "<",
+          "value": 94
+        },
+        {
+          "field": "spo2",
+          "operator": ">=",
+          "value": 92
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - SpO2 92-93%"
+      }
+    },
+    {
+      "id": "R3-7",
+      "name": "Độ 3 - Rối loạn vận mạch",
+      "grade": "3",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "mottled_sweat_cold",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "3",
+        "description": "Rối loạn thần kinh thực vật nặng - Rối loạn vận mạch: da nổi bông/vân tím + mồ hôi/chi lạnh"
+      }
+    },
+    {
+      "id": "R4-1",
+      "name": "Độ 4 - Ngưng thở hoặc thở bất thường",
+      "grade": "4",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "apnea_irregular_breath",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4",
+        "description": "Suy hô hấp tuần hoàn nặng - Ngưng thở hoặc rối loạn nhịp thở"
+      }
+    },
+    {
+      "id": "R4-2",
+      "name": "Độ 4 - Tím tái",
+      "grade": "4",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "cyanosis",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4",
+        "description": "Suy hô hấp tuần hoàn nặng - Tím tái"
+      }
+    },
+    {
+      "id": "R4-3",
+      "name": "Độ 4 - SpO2 < 92%",
+      "grade": "4",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "spo2",
+          "operator": "<",
+          "value": 92
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4",
+        "description": "Suy hô hấp tuần hoàn nặng - SpO2 < 92%"
+      }
+    },
+    {
+      "id": "R4-4",
+      "name": "Độ 4 - Phù phổi cấp",
+      "grade": "4",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "pulmonary_edema",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4",
+        "description": "Suy hô hấp tuần hoàn nặng - Phù phổi cấp"
+      }
+    },
+    {
+      "id": "R4-5",
+      "name": "Độ 4 - Sốc (mạch không bắt)",
+      "grade": "4",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "shock_pulse_absent",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4",
+        "description": "Suy hô hấp tuần hoàn nặng - Sốc (mạch không bắt được)"
+      }
+    },
+    {
+      "id": "R4-6",
+      "name": "Độ 4 - Hiệu áp ≤ 25 mmHg",
+      "grade": "4",
+      "priority": 5,
+      "conditions": [
+        {
+          "field": "pulse_pressure",
+          "operator": "<=",
+          "value": 25
+        }
+      ],
+      "conclusion": {
+        "disease_level": "4",
+        "description": "Suy hô hấp tuần hoàn nặng - Hiệu áp (Pulse Pressure) ≤ 25 mmHg"
+      }
+    }
+  ],
+  "intermediate_rules": []
+}
