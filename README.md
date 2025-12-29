@@ -86,9 +86,3 @@ Mọi đóng góp đều được hoan nghênh! Vui lòng:
 
 ---
 
----
-
-## 📞 Liên hệ
-
-- **GitHub**: [@your-username](https://github.com/your-username)
-- **Email**: your.email@example.com
