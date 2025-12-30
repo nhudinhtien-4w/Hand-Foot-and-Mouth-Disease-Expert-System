@@ -55,8 +55,6 @@ pip install -r requirements.txt
 # Chạy Flask server
 python app.py
 
-# Server sẽ chạy tại: http://localhost:5000
-# Mở trình duyệt và truy cập http://localhost:5000
 ```
 
 ---
